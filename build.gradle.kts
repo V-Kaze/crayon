@@ -1,3 +1,5 @@
+import net.ltgt.gradle.errorprone.CheckSeverity
+import net.ltgt.gradle.errorprone.errorprone
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
@@ -7,6 +9,7 @@ plugins {
     alias(libs.plugins.kotlin) // Kotlin support
     alias(libs.plugins.intelliJPlatform) // IntelliJ Platform Gradle Plugin
     alias(libs.plugins.changelog) // Gradle Changelog Plugin
+    alias(libs.plugins.errorprone) // Google ErrorProne Plugin
 }
 
 group = providers.gradleProperty("pluginGroup").get()
@@ -46,6 +49,11 @@ dependencies {
         zipSigner()
         testFramework(TestFrameworkType.Platform)
     }
+
+    errorprone(libs.errorprone.core)
+    errorprone(libs.nullaway)
+
+    implementation(libs.jspecify)
 }
 
 // Configure IntelliJ Platform Gradle Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-extension.html
@@ -120,6 +128,56 @@ tasks {
 
     publishPlugin {
         dependsOn(patchChangelog)
+    }
+
+    withType<JavaCompile> {
+        options.errorprone.disableWarningsInGeneratedCode = true
+        options.errorprone.check("NullAway", CheckSeverity.ERROR)
+        options.errorprone.check("AlreadyChecked", CheckSeverity.ERROR)
+        options.errorprone.check("AmbiguousMethodReference", CheckSeverity.ERROR)
+        options.errorprone.check("AnnotateFormatMethod", CheckSeverity.ERROR)
+        options.errorprone.check("ArrayAsKeyOfSetOrMap", CheckSeverity.ERROR)
+        options.errorprone.check("AssertEqualsArgumentOrderChecker", CheckSeverity.ERROR)
+        options.errorprone.check("AssertThrowsMultipleStatements", CheckSeverity.ERROR)
+        options.errorprone.check("AssertionFailureIgnored", CheckSeverity.ERROR)
+        options.errorprone.check("BadInstanceof", CheckSeverity.ERROR)
+        options.errorprone.check("BareDotMetacharacter", CheckSeverity.ERROR)
+        options.errorprone.check("BigDecimalEquals", CheckSeverity.ERROR)
+        options.errorprone.check("BigDecimalLiteralDouble", CheckSeverity.ERROR)
+        options.errorprone.check("BoxedPrimitiveConstructor", CheckSeverity.ERROR)
+        options.errorprone.check("CanonicalDuration", CheckSeverity.ERROR)
+        options.errorprone.check("CatchAndPrintStackTrace", CheckSeverity.ERROR)
+        options.errorprone.check("ClassCanBeStatic", CheckSeverity.ERROR)
+        options.errorprone.check("CompareToZero", CheckSeverity.ERROR)
+        options.errorprone.check("ComplexBooleanConstant", CheckSeverity.ERROR)
+        options.errorprone.check("DefaultCharset", CheckSeverity.ERROR)
+        options.errorprone.check("ImmutableEnumChecker", CheckSeverity.ERROR)
+        options.errorprone.check("ImmutableAnnotationChecker", CheckSeverity.ERROR)
+        options.errorprone.check("InconsistentCapitalization", CheckSeverity.ERROR)
+        options.errorprone.check("InvalidThrows", CheckSeverity.ERROR)
+        options.errorprone.check("JavaTimeDefaultTimeZone", CheckSeverity.ERROR)
+        options.errorprone.check("JavaUtilDate", CheckSeverity.ERROR)
+        options.errorprone.check("LoopOverCharArray", CheckSeverity.ERROR)
+        options.errorprone.check("MissingOverride", CheckSeverity.ERROR)
+        options.errorprone.check("OperatorPrecedence", CheckSeverity.ERROR)
+        options.errorprone.check("OptionalMapToOptional", CheckSeverity.ERROR)
+        options.errorprone.check("OptionalNotPresent", CheckSeverity.ERROR)
+        options.errorprone.check("OrphanedFormatString", CheckSeverity.ERROR)
+        options.errorprone.check("OverrideThrowableToString", CheckSeverity.ERROR)
+        options.errorprone.check("StringCharset", CheckSeverity.ERROR)
+        options.errorprone.check("StringSplitter", CheckSeverity.ERROR)
+        options.errorprone.check("UnusedMethod", CheckSeverity.ERROR)
+        options.errorprone.check("UnusedNestedClass", CheckSeverity.ERROR)
+        options.errorprone.check("UnusedTypeParameter", CheckSeverity.ERROR)
+        options.errorprone.check("UnusedVariable", CheckSeverity.ERROR)
+        options.errorprone.check("VariableNameSameAsType", CheckSeverity.ERROR)
+        options.errorprone.option("NullAway:AnnotatedPackages", "io.vkaze.gradle")
+        // Include to disable NullAway on test code
+        if (name.lowercase().contains("test")) {
+            options.errorprone {
+                disable("NullAway")
+            }
+        }
     }
 }
 
