@@ -8,13 +8,13 @@ import org.jetbrains.annotations.PropertyKey;
 
 import java.util.function.Supplier;
 
-public class MyBundle extends DynamicBundle {
+public class MsgBundle extends DynamicBundle {
     @NotNull
-    public static final MyBundle INSTANCE = new MyBundle();
+    public static final MsgBundle INSTANCE = new MsgBundle();
     @NonNls
-    private static final String BUNDLE = "messages.MyBundle";
+    private static final String BUNDLE = "messages.crayon";
 
-    private MyBundle() {
+    private MsgBundle() {
         super(BUNDLE);
     }
 

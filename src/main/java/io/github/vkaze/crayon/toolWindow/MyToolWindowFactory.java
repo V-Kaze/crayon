@@ -6,7 +6,9 @@ import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowFactory;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBPanel;
-import io.github.vkaze.crayon.MyBundle;
+import com.intellij.ui.content.Content;
+import com.intellij.ui.content.ContentFactory;
+import io.github.vkaze.crayon.MsgBundle;
 import io.github.vkaze.crayon.services.MyProjectService;
 import org.jspecify.annotations.NonNull;
 
@@ -21,7 +23,9 @@ public class MyToolWindowFactory implements ToolWindowFactory {
 
     @Override
     public void createToolWindowContent(@NonNull Project project, @NonNull ToolWindow toolWindow) {
-
+        MyToolWindow myToolWindow = new MyToolWindow(toolWindow);
+        Content content = ContentFactory.getInstance().createContent(myToolWindow.getContent(), null, false);
+        toolWindow.getContentManager().addContent(content);
     }
 
     public static class MyToolWindow {
@@ -32,9 +36,9 @@ public class MyToolWindowFactory implements ToolWindowFactory {
         }
 
         public JBPanel<JBPanel<?>> getContent() {
-            JBLabel label = new JBLabel(MyBundle.message("randomLabel", "?"));
-            JButton button = new JButton(MyBundle.message("shuffle"));
-            button.addActionListener(event -> label.setText(MyBundle.message("randomLabel", service.getRandomNumber())));
+            JBLabel label = new JBLabel(MsgBundle.message("randomLabel", "?"));
+            JButton button = new JButton(MsgBundle.message("shuffle"));
+            button.addActionListener(event -> label.setText(MsgBundle.message("randomLabel", service.getRandomNumber())));
             JBPanel<JBPanel<?>> panel = new JBPanel<>();
             panel.add(label);
             panel.add(button);
