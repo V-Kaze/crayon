@@ -1,6 +1,6 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.vkaze.crayon</id>
+    <id>io.github.vkaze.crayon</id>
     <name>crayon</name>
     <vendor>v-kaze</vendor>
 
@@ -9,10 +9,11 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.vkaze.crayon.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+        <toolWindow factoryClass="io.github.vkaze.crayon.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.vkaze.crayon.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
+        <listener class="io.github.vkaze.crayon.listeners.MyApplicationActivationListener"
+                  topic="com.intellij.openapi.application.ApplicationActivationListener"/>
     </applicationListeners>
 </idea-plugin>
