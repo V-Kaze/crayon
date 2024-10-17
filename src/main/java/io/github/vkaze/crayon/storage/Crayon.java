@@ -1,11 +1,11 @@
 package io.github.vkaze.crayon.storage;
 
-public enum CrayonColor {
+public enum Crayon {
     BLUE,
     GRAY,
     GREEN,
     ORANGE,
     ROSE,
-    Violet,
-    Yellow,
+    VIOLET,
+    YELLOW,
 }

@@ -8,10 +8,12 @@ import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.serviceContainer.NonInjectable;
 import com.intellij.util.xmlb.XmlSerializerUtil;
-import com.intellij.util.xmlb.annotations.MapAnnotation;
+import com.intellij.util.xmlb.annotations.Property;
+import com.intellij.util.xmlb.annotations.XMap;
 import org.jspecify.annotations.NonNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,8 +22,9 @@ import java.util.Map;
 @State(name = "FileCrayonState", storages = @Storage(value = "crayons.xml"))
 public final class FileCrayonState implements PersistentStateComponent<FileCrayonState> {
     private static final Logger log = Logger.getInstance(FileCrayonState.class);
-    @MapAnnotation
-    private final Map<String, CrayonColor> files;
+    @Property(surroundWithTag = false)
+    @XMap(entryTagName = "coloredFile", keyAttributeName = "path", valueAttributeName = "color")
+    public final Map<String, Crayon> files;
 
     @NonInjectable
     public FileCrayonState() {
@@ -43,7 +46,7 @@ public final class FileCrayonState implements PersistentStateComponent<FileCrayo
         XmlSerializerUtil.copyBean(state, this);
     }
 
-    public void addFile(String path, CrayonColor color) {
+    public void addFile(String path, Crayon color) {
         files.put(path, color);
     }
 
@@ -55,9 +58,10 @@ public final class FileCrayonState implements PersistentStateComponent<FileCrayo
 
     public List<TableRow> toTableRows() {
         List<TableRow> tableRows = new ArrayList<>(files.size());
-        for (Map.Entry<String, CrayonColor> entry : files.entrySet()) {
+        for (Map.Entry<String, Crayon> entry : files.entrySet()) {
             tableRows.add(new TableRow(entry.getKey(), entry.getValue()));
         }
+        Collections.sort(tableRows);
         return tableRows;
     }
 }
