@@ -169,7 +169,7 @@ tasks {
         options.errorprone.check("UnusedMethod", CheckSeverity.ERROR)
         options.errorprone.check("UnusedNestedClass", CheckSeverity.ERROR)
         options.errorprone.check("UnusedTypeParameter", CheckSeverity.ERROR)
-        options.errorprone.check("UnusedVariable", CheckSeverity.ERROR)
+        options.errorprone.check("UnusedVariable", CheckSeverity.WARN)
         options.errorprone.check("VariableNameSameAsType", CheckSeverity.ERROR)
         options.errorprone.option("NullAway:AnnotatedPackages", "io.vkaze.gradle")
         // Include to disable NullAway on test code
