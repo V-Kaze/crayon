@@ -1,17 +1,28 @@
 package io.github.vkaze.crayon.ui;
 
 import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.ui.JBColor;
 import com.intellij.ui.table.JBTable;
 import com.intellij.util.ui.EditableModel;
+import com.intellij.util.ui.EmptyIcon;
 import io.github.vkaze.crayon.MsgBundle;
+import io.github.vkaze.crayon.storage.Crayon;
 import io.github.vkaze.crayon.storage.FileCrayonState;
 import io.github.vkaze.crayon.storage.TableRow;
 import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
+import javax.swing.Icon;
+import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +45,7 @@ public abstract class FileCrayonTable extends JBTable {
         TableColumn nameColumn = columnModel.getColumn(PATH_COLUMN);
         nameColumn.setCellRenderer(new DefaultTableCellRenderer());
         TableColumn colorColumn = columnModel.getColumn(COLOR_COLUMN);
-        colorColumn.setCellRenderer(new DefaultTableCellRenderer());
+        colorColumn.setCellRenderer(new ColorCellRenderer());
     }
 
     @Override
@@ -122,6 +133,43 @@ public abstract class FileCrayonTable extends JBTable {
             log.info("Resetting rows");
             rows = state.toTableRows();
             removed = new ArrayList<>();
+        }
+    }
+
+    private static class ColorCellRenderer extends JLabel implements TableCellRenderer {
+        @Nullable
+        private JBColor iconColor;
+
+        private ColorCellRenderer() {
+            setOpaque(true);
+            setIcon(EmptyIcon.ICON_16);
+        }
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            if (value instanceof Crayon crayon) {
+                iconColor = crayon.getColor();
+                setText(crayon.getColorName());
+            }
+            return this;
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+
+            if (iconColor != null) {
+                final Icon icon = getIcon();
+                final int width = icon.getIconWidth();
+                final int height = icon.getIconHeight();
+
+                final Color old = g.getColor();
+
+                g.setColor(iconColor);
+                g.fillRect(0, 0, width, height);
+
+                g.setColor(old);
+            }
         }
     }
 }
