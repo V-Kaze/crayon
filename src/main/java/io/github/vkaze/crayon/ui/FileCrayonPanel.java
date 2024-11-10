@@ -12,7 +12,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.util.List;
 
 public class FileCrayonPanel extends JPanel {
     private static final Logger log = Logger.getInstance(FileCrayonPanel.class);
@@ -29,12 +28,7 @@ public class FileCrayonPanel extends JPanel {
         final JPanel mainPanel = new JPanel(new GridLayout(1, 1));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 0));
 
-        crayonTable = new FileCrayonTable(crayonState) {
-            @Override
-            protected void apply(List<String> removed) {
-                crayonState.removeFiles(removed);
-            }
-        };
+        crayonTable = new FileCrayonTable(crayonState);
 
         final JPanel panel = ToolbarDecorator.createDecorator(crayonTable)
                 .disableAddAction()
