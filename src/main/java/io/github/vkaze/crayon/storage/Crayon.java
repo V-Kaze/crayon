@@ -6,6 +6,7 @@ import com.intellij.util.ui.ColorIcon;
 import com.intellij.util.ui.EmptyIcon;
 
 import java.awt.Color;
+import java.util.Locale;
 
 @SuppressWarnings("ImmutableEnumChecker")
 public enum Crayon {
@@ -20,7 +21,7 @@ public enum Crayon {
 
     Crayon(Color color) {
         this.colorIcon = new ColorIcon(EmptyIcon.ICON_16.getIconWidth(), color);
-        this.colorName = StringUtil.capitalize(name().toLowerCase());
+        this.colorName = StringUtil.capitalize(name().toLowerCase(Locale.ENGLISH));
     }
 
     public ColorIcon getColorIcon() {

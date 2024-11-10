@@ -4,7 +4,6 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.Service;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.serviceContainer.NonInjectable;
 import com.intellij.util.xmlb.XmlSerializerUtil;
@@ -21,7 +20,6 @@ import java.util.Map;
 @Service(Service.Level.PROJECT)
 @State(name = "FileCrayonState", storages = @Storage(value = "crayons.xml"))
 public final class FileCrayonState implements PersistentStateComponent<FileCrayonState> {
-    private static final Logger log = Logger.getInstance(FileCrayonState.class);
     @Property(surroundWithTag = false)
     @XMap(entryTagName = "coloredFile", keyAttributeName = "path", valueAttributeName = "color")
     public final Map<String, Crayon> files;
