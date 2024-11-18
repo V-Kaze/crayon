@@ -1,4 +1,4 @@
-package io.github.vkaze.crayon.ui;
+package io.github.vkaze.crayon.ui.settings;
 
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.options.Configurable;

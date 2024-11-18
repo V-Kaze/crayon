@@ -1,11 +1,11 @@
-package io.github.vkaze.crayon.ui.table;
+package io.github.vkaze.crayon.ui.settings.table;
 
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.util.ui.EditableModel;
 import io.github.vkaze.crayon.MsgBundle;
 import io.github.vkaze.crayon.storage.FileCrayonState;
 import io.github.vkaze.crayon.storage.TableRow;
-import io.github.vkaze.crayon.ui.ColumnConstants;
+import io.github.vkaze.crayon.ui.settings.ColumnConstants;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;

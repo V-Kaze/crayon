@@ -1,4 +1,4 @@
-package io.github.vkaze.crayon.ui;
+package io.github.vkaze.crayon.ui.settings;
 
 public class ColumnConstants {
     public static final int PATH_COLUMN = 0;

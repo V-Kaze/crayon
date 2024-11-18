@@ -1,10 +1,11 @@
-package io.github.vkaze.crayon.ui;
+package io.github.vkaze.crayon.ui.settings;
 
 import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.ui.ToolbarDecorator;
 import io.github.vkaze.crayon.MsgBundle;
 import io.github.vkaze.crayon.storage.FileCrayonState;
+import io.github.vkaze.crayon.ui.settings.table.FileCrayonTable;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;

@@ -11,7 +11,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow factoryClass="io.github.vkaze.crayon.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
 
-        <projectConfigurable id="settings.crayon" instance="io.github.vkaze.crayon.ui.FileCrayonConfigurable"
+        <projectConfigurable id="settings.crayon" instance="io.github.vkaze.crayon.ui.settings.FileCrayonConfigurable"
                              displayName="Crayon" dynamic="true"/>
     </extensions>
 

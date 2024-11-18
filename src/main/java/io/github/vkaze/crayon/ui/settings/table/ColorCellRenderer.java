@@ -1,4 +1,4 @@
-package io.github.vkaze.crayon.ui.table;
+package io.github.vkaze.crayon.ui.settings.table;
 
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.util.ui.EmptyIcon;

@@ -1,10 +1,9 @@
-package io.github.vkaze.crayon.ui;
+package io.github.vkaze.crayon.ui.settings.table;
 
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.ui.table.JBTable;
 import io.github.vkaze.crayon.storage.FileCrayonState;
-import io.github.vkaze.crayon.ui.table.ColorCellRenderer;
-import io.github.vkaze.crayon.ui.table.ModelAdapter;
+import io.github.vkaze.crayon.ui.settings.ColumnConstants;
 import org.jspecify.annotations.NonNull;
 
 import javax.swing.table.DefaultTableCellRenderer;
