@@ -1,7 +1,7 @@
 [versions]
 # libraries
 junit = "4.13.2"
-errorprone_core = "2.35.1"
+errorprone_core = "2.36.0"
 nullaway = "0.12.1"
 jspecify = "1.0.0"
 
