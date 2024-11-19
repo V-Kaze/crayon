@@ -9,10 +9,9 @@ import com.intellij.serviceContainer.NonInjectable;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Property;
 import com.intellij.util.xmlb.annotations.XMap;
+import io.github.vkaze.crayon.Crayon;
 import org.jspecify.annotations.NonNull;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,14 +51,5 @@ public final class FileCrayonState implements PersistentStateComponent<FileCrayo
         for (String path : paths) {
             files.remove(path);
         }
-    }
-
-    public List<TableRow> toTableRows() {
-        List<TableRow> tableRows = new ArrayList<>(files.size());
-        for (Map.Entry<String, Crayon> entry : files.entrySet()) {
-            tableRows.add(new TableRow(entry.getKey(), entry.getValue()));
-        }
-        Collections.sort(tableRows);
-        return tableRows;
     }
 }

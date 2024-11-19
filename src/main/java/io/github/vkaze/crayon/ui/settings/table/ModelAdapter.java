@@ -2,14 +2,15 @@ package io.github.vkaze.crayon.ui.settings.table;
 
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.util.ui.EditableModel;
+import io.github.vkaze.crayon.Crayon;
 import io.github.vkaze.crayon.MsgBundle;
 import io.github.vkaze.crayon.storage.FileCrayonState;
-import io.github.vkaze.crayon.storage.TableRow;
-import io.github.vkaze.crayon.ui.settings.ColumnConstants;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class ModelAdapter extends AbstractTableModel implements EditableModel {
     private static final Logger log = Logger.getInstance(ModelAdapter.class);
@@ -68,7 +69,16 @@ public class ModelAdapter extends AbstractTableModel implements EditableModel {
 
     public void reset(FileCrayonState state) {
         log.info("Resetting rows");
-        rows = state.toTableRows();
+        rows = convertTableRows(state);
         removed = new ArrayList<>();
+    }
+
+    private List<TableRow> convertTableRows(FileCrayonState state) {
+        List<TableRow> tableRows = new ArrayList<>(state.files.size());
+        for (Map.Entry<String, Crayon> entry : state.files.entrySet()) {
+            tableRows.add(new TableRow(entry.getKey(), entry.getValue()));
+        }
+        Collections.sort(tableRows);
+        return tableRows;
     }
 }

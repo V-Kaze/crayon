@@ -2,7 +2,7 @@ package io.github.vkaze.crayon.ui.settings.table;
 
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.util.ui.EmptyIcon;
-import io.github.vkaze.crayon.storage.Crayon;
+import io.github.vkaze.crayon.Crayon;
 
 import javax.swing.table.DefaultTableCellRenderer;
 

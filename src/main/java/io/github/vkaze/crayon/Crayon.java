@@ -1,4 +1,4 @@
-package io.github.vkaze.crayon.storage;
+package io.github.vkaze.crayon;
 
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.ui.JBColor;
