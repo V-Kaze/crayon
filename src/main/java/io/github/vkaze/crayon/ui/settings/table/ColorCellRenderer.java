@@ -16,10 +16,9 @@ public class ColorCellRenderer extends DefaultTableCellRenderer {
     @Override
     protected void setValue(Object value) {
         if (value instanceof Crayon crayon) {
-            log.warn("Creating new color icon. Current object: " + this.hashCode());
             setIcon(crayon.getColorIcon());
         } else {
-            super.setValue("The value is not a Crayon");
+            log.warn("Unexpected value: " + value);
         }
     }
 }

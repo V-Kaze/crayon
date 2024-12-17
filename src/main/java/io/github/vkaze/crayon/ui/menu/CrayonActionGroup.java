@@ -4,7 +4,6 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.vfs.VirtualFile;
 import io.github.vkaze.crayon.Crayon;
 import io.github.vkaze.crayon.MsgBundle;
 import org.jetbrains.annotations.NotNull;
@@ -39,13 +38,6 @@ public class CrayonActionGroup extends ActionGroup implements CrayonAction {
     @Override
     public AnAction @NotNull [] getChildren(@Nullable AnActionEvent anActionEvent) {
         return ACTIONS;
-    }
-
-    @Override
-    public void update(@NotNull AnActionEvent event) {
-        VirtualFile file = getFile(event);
-        boolean enabled = isEnabled(file);
-        event.getPresentation().setEnabledAndVisible(enabled);
     }
 
     @Override

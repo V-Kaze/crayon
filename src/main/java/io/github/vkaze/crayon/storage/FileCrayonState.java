@@ -49,7 +49,11 @@ public final class FileCrayonState implements PersistentStateComponent<FileCrayo
 
     public void removeFiles(List<String> paths) {
         for (String path : paths) {
-            files.remove(path);
+            removeFile(path);
         }
+    }
+
+    public void removeFile(String path) {
+        files.remove(path);
     }
 }

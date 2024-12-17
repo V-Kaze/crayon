@@ -5,9 +5,9 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.NlsActions;
 import com.intellij.openapi.vfs.VirtualFile;
+import io.github.vkaze.crayon.storage.FileCrayonState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -26,22 +26,15 @@ public class CleanCrayonAction extends AnAction implements CrayonAction {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent event) {
-        VirtualFile file = getFile(event);
-        if (file == null) {
-            log.warn("CleanCrayonAction was triggered by an event that doesn't have a virtual file attach. Event: " + event);
+        Project currentProject = event.getProject();
+        if (currentProject == null) {
             return;
         }
-        // TODO: Remove selected file from the storage
-        // Using the event, create and show a dialog
-        Project currentProject = event.getProject();
-        String message = "Cleaning " + file + " from crayons!";
-        String title = event.getPresentation().getDescription();
-        Messages.showMessageDialog(currentProject, message, title, Messages.getInformationIcon());
-    }
-
-    @Override
-    public void update(@NotNull AnActionEvent event) {
-        // TODO: Check if the file is colored by a crayon
+        FileCrayonState fileCrayonState = FileCrayonState.getInstance(currentProject);
+        VirtualFile[] files = getFiles(event);
+        for (VirtualFile file : files) {
+            fileCrayonState.removeFile(file.getPath());
+        }
     }
 
     @Override

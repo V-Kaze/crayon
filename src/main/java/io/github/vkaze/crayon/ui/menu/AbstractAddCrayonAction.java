@@ -5,10 +5,10 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.NlsActions;
 import com.intellij.openapi.vfs.VirtualFile;
 import io.github.vkaze.crayon.Crayon;
+import io.github.vkaze.crayon.storage.FileCrayonState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,18 +27,19 @@ public abstract class AbstractAddCrayonAction extends AnAction implements Crayon
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent event) {
-        VirtualFile file = getFile(event);
-        if (file == null) {
-            log.warn("AddCrayonAction was triggered by an event that doesn't have a virtual file attach. Event: {}");
+        Project currentProject = event.getProject();
+        if (currentProject == null) {
             return;
         }
-        // TODO: Add selected file to the storage
-        // Using the event, create and show a dialog
-        Project currentProject = event.getProject();
+        FileCrayonState fileCrayonState = FileCrayonState.getInstance(currentProject);
         Crayon crayon = getCrayon();
-        String message = "Coloring " + file + " using " + crayon + " crayon!";
-        String title = event.getPresentation().getDescription();
-        Messages.showMessageDialog(currentProject, message, title, Messages.getInformationIcon());
+        VirtualFile[] files = getFiles(event);
+        for (VirtualFile file : files) {
+            if (!file.isInLocalFileSystem()) {
+                continue;
+            }
+            fileCrayonState.addFile(file.getPath(), crayon);
+        }
     }
 
     @Override

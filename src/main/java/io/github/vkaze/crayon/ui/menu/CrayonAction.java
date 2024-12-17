@@ -4,22 +4,15 @@ import com.intellij.openapi.actionSystem.ActionUpdateThreadAware;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.vfs.VirtualFile;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.Nullable;
 
 public interface CrayonAction extends ActionUpdateThreadAware {
-    default @Nullable VirtualFile getFile(AnActionEvent event) {
-        return event.getData(CommonDataKeys.VIRTUAL_FILE);
-    }
+    VirtualFile[] EMPTY_ARRAY = new VirtualFile[0];
 
-    @Contract(pure = true, value = "null -> false")
-    default boolean isEnabled(@Nullable VirtualFile file) {
-        if (file == null) {
-            return false;
+    default VirtualFile[] getFiles(AnActionEvent event) {
+        VirtualFile[] files = event.getData(CommonDataKeys.VIRTUAL_FILE_ARRAY);
+        if (files == null) {
+            files = EMPTY_ARRAY;
         }
-        if (!file.isInLocalFileSystem()) {
-            return false;
-        }
-        return !file.isDirectory();
+        return files;
     }
 }
