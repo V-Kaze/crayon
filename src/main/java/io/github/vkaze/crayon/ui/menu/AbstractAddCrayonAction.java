@@ -35,6 +35,9 @@ public abstract class AbstractAddCrayonAction extends AnAction implements Crayon
         Crayon crayon = getCrayon();
         VirtualFile[] files = getFiles(event);
         for (VirtualFile file : files) {
+            if (!file.isValid()) {
+                continue;
+            }
             if (!file.isInLocalFileSystem()) {
                 continue;
             }
