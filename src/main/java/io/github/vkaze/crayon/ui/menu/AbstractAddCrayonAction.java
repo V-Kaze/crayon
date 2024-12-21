@@ -1,5 +1,6 @@
 package io.github.vkaze.crayon.ui.menu;
 
+import com.intellij.ide.projectView.ProjectView;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -34,6 +35,7 @@ public abstract class AbstractAddCrayonAction extends AnAction implements Crayon
         FileCrayonState fileCrayonState = FileCrayonState.getInstance(currentProject);
         Crayon crayon = getCrayon();
         VirtualFile[] files = getFiles(event);
+        boolean modified = false;
         for (VirtualFile file : files) {
             if (!file.isValid()) {
                 continue;
@@ -42,6 +44,10 @@ public abstract class AbstractAddCrayonAction extends AnAction implements Crayon
                 continue;
             }
             fileCrayonState.addFile(file.getPath(), crayon);
+            modified = true;
+        }
+        if (modified) {
+            ProjectView.getInstance(currentProject).refresh();
         }
     }
 

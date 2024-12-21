@@ -54,8 +54,9 @@ public final class FileCrayonState implements PersistentStateComponent<FileCrayo
         }
     }
 
-    public void removeFile(String path) {
-        files.remove(path);
+    public boolean removeFile(String path) {
+        Crayon removed = files.remove(path);
+        return removed != null;
     }
 
     public @Nullable Crayon getCrayon(String path) {

@@ -1,5 +1,6 @@
 package io.github.vkaze.crayon.ui.menu;
 
+import com.intellij.ide.projectView.ProjectView;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -32,8 +33,12 @@ public class CleanCrayonAction extends AnAction implements CrayonAction {
         }
         FileCrayonState fileCrayonState = FileCrayonState.getInstance(currentProject);
         VirtualFile[] files = getFiles(event);
+        boolean modified = false;
         for (VirtualFile file : files) {
-            fileCrayonState.removeFile(file.getPath());
+            modified |= fileCrayonState.removeFile(file.getPath());
+        }
+        if (modified) {
+            ProjectView.getInstance(currentProject).refresh();
         }
     }
 
