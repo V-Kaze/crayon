@@ -11,6 +11,7 @@ import com.intellij.util.xmlb.annotations.Property;
 import com.intellij.util.xmlb.annotations.XMap;
 import io.github.vkaze.crayon.Crayon;
 import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.List;
@@ -55,5 +56,9 @@ public final class FileCrayonState implements PersistentStateComponent<FileCrayo
 
     public void removeFile(String path) {
         files.remove(path);
+    }
+
+    public @Nullable Crayon getCrayon(String path) {
+        return files.get(path);
     }
 }

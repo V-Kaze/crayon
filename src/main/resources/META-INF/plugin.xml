@@ -13,6 +13,8 @@
 
         <projectConfigurable id="settings.crayon" instance="io.github.vkaze.crayon.ui.settings.FileCrayonConfigurable"
                              displayName="Crayon" dynamic="true"/>
+
+        <projectViewNodeDecorator implementation="io.github.vkaze.crayon.ui.project.CrayonProjectDecorator"/>
     </extensions>
 
     <applicationListeners>
