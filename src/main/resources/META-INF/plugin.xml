@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>io.github.vkaze.crayon</id>
-    <name>crayon</name>
+    <name>Crayon</name>
     <vendor>v-kaze</vendor>
 
     <depends>com.intellij.modules.platform</depends>
@@ -9,18 +9,12 @@
     <resource-bundle>messages.crayon</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="io.github.vkaze.crayon.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-
         <projectConfigurable id="settings.crayon" instance="io.github.vkaze.crayon.ui.settings.FileCrayonConfigurable"
                              displayName="Crayon" dynamic="true"/>
 
         <projectViewNodeDecorator implementation="io.github.vkaze.crayon.ui.project.CrayonProjectDecorator"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="io.github.vkaze.crayon.listeners.MyApplicationActivationListener"
-                  topic="com.intellij.openapi.application.ApplicationActivationListener"/>
-    </applicationListeners>
     <actions>
         <group id="io.github.vkaze.crayon.ui.menu.GroupedActions"
                class="io.github.vkaze.crayon.ui.menu.CrayonActionGroup"
