@@ -1,0 +1,32 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="400" height="400"
+     preserveAspectRatio="xMidYMid meet" version="1.1" viewBox="0 0 400 400">
+    <defs>
+        <path id="shadow" d="M 72 273 l 0 -146 c 0 -14 14 -28 28 -28 l 48 0 c 7 0 14 7 14 7 l 139 0"
+              stroke-width="14" stroke="black" fill="none"/>
+        <path id="directory"
+              d="M 72 200 l 0 -73 c 0 -14 14 -28 28 -28 l 48 0 c 7 0 14 7 14 7 l 138 0 c 14 0 28 14 28 28 l 0 139 c 0 14 -14 28 -28 28 l -200 0 c -14 0 -28 -14 -28 -28 l 0 -81"
+              stroke-width="14" stroke="black" fill="#c9c0a4"/>
+        <path id="file"
+              d="M 177 250 l 0 -100 c 0 -2 2 -4 4 -4 l 22 0 l 20 20 l 0 85 c 0 2 -2 4 -4 4 l -37 0 c -2 0 -5 -2 -5 -5"
+              stroke-width="4"/>
+        <path id="file-shadow" d="M 203 145 l 1 0 l 20 20 l 0 1 l -16 0 c -2 0 -4 -2 -4 -4 l 0 -17" stroke-width="2"/>
+    </defs>
+    <g>
+        <circle id="background" cx="200" cy="200" r="200" fill="#c9c0a4"/>
+    </g>
+    <g>
+        <use xlink:href="#shadow" transform="translate(-25,-25)"/>
+        <use xlink:href="#shadow" transform="translate(0,0)"/>
+        <use xlink:href="#directory" transform="translate(25,25)"/>
+    </g>
+    <g>
+        <use xlink:href="#file" transform="translate(-48,25)" fill="#ff5156" stroke="#ff5156"/>
+        <use xlink:href="#file-shadow" transform="translate(-48,25)" fill="#bf3b41" stroke="#bf3b41"/>
+
+        <use xlink:href="#file" transform="translate(25,25)" fill="#0ece89" stroke="#0ece89"/>
+        <use xlink:href="#file-shadow" transform="translate(25,25)" fill="#519777" stroke="#519777"/>
+
+        <use xlink:href="#file" transform="translate(98,25)" fill="#09b2ed" stroke="#09b2ed"/>
+        <use xlink:href="#file-shadow" transform="translate(98,25)" fill="#288aae" stroke="#288aae"/>
+    </g>
+</svg>
