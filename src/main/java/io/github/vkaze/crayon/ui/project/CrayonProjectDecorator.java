@@ -24,7 +24,7 @@ public class CrayonProjectDecorator implements ProjectViewNodeDecorator {
         }
         FileCrayonState fileCrayonState = FileCrayonState.getInstance(project);
         String path = virtualFile.getPath();
-        Crayon crayon = fileCrayonState.getCrayon(path);
+        Crayon crayon = fileCrayonState.getCrayon(virtualFile);
         if (crayon == null) {
             return;
         }

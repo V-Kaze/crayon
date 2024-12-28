@@ -74,7 +74,10 @@ public class ModelAdapter extends AbstractTableModel implements EditableModel {
     }
 
     private List<TableRow> convertTableRows(FileCrayonState state) {
-        List<TableRow> tableRows = new ArrayList<>(state.files.size());
+        List<TableRow> tableRows = new ArrayList<>(state.dirs.size() + state.files.size());
+        for (Map.Entry<String, Crayon> entry : state.dirs.entrySet()) {
+            tableRows.add(new TableRow(entry.getKey(), entry.getValue()));
+        }
         for (Map.Entry<String, Crayon> entry : state.files.entrySet()) {
             tableRows.add(new TableRow(entry.getKey(), entry.getValue()));
         }

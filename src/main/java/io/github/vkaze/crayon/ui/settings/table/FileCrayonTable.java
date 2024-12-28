@@ -34,13 +34,13 @@ public class FileCrayonTable extends JBTable {
     }
 
     public boolean isModified() {
-        log.info("Checking if the data was modified");
+        log.debug("Checking if the data was modified");
         return !getModel().getRemoved().isEmpty();
     }
 
     public void apply() {
         if (isModified()) {
-            log.info("Applying changes");
+            log.debug("Applying changes");
             apply(getModel().getRemoved());
             reset();
         }
@@ -48,7 +48,7 @@ public class FileCrayonTable extends JBTable {
 
     public void reset() {
         if (isModified()) {
-            log.info("Resetting changes");
+            log.debug("Resetting changes");
             getModel().reset(state);
         }
     }

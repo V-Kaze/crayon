@@ -35,14 +35,14 @@ public class FileCrayonConfigurable implements Configurable {
 
     @Override
     public boolean isModified() {
-        log.info("Checking if the panel was modified");
+        log.debug("Checking if the panel was modified");
         return fileCrayonPanel != null && fileCrayonPanel.isModified();
     }
 
     @Override
     public void apply() {
         if (fileCrayonPanel != null) {
-            log.info("Applying changes to the panel");
+            log.debug("Applying changes to the panel");
             fileCrayonPanel.apply();
         }
     }
@@ -50,7 +50,7 @@ public class FileCrayonConfigurable implements Configurable {
     @Override
     public void reset() {
         if (fileCrayonPanel != null) {
-            log.info("Resetting the panel");
+            log.debug("Resetting the panel");
             fileCrayonPanel.reset();
         }
     }
@@ -58,7 +58,7 @@ public class FileCrayonConfigurable implements Configurable {
     @Override
     public void disposeUIResources() {
         if (fileCrayonPanel != null) {
-            log.info("Disposing the panel");
+            log.debug("Disposing the panel");
             fileCrayonPanel = null;
         }
     }

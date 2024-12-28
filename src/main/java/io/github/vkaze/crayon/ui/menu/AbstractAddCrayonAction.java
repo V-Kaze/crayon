@@ -37,14 +37,8 @@ public abstract class AbstractAddCrayonAction extends AnAction implements Crayon
         VirtualFile[] files = getFiles(event);
         boolean modified = false;
         for (VirtualFile file : files) {
-            if (!file.isValid()) {
-                continue;
-            }
-            if (!file.isInLocalFileSystem()) {
-                continue;
-            }
-            fileCrayonState.addFile(file.getPath(), crayon);
-            modified = true;
+            boolean added = fileCrayonState.addFile(file, crayon);
+            modified = modified || added;
         }
         if (modified) {
             ProjectView.getInstance(currentProject).refresh();

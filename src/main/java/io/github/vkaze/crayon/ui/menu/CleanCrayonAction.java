@@ -35,7 +35,8 @@ public class CleanCrayonAction extends AnAction implements CrayonAction {
         VirtualFile[] files = getFiles(event);
         boolean modified = false;
         for (VirtualFile file : files) {
-            modified |= fileCrayonState.removeFile(file.getPath());
+            String path = file.getPath();
+            modified |= fileCrayonState.removeFile(path);
         }
         if (modified) {
             ProjectView.getInstance(currentProject).refresh();
