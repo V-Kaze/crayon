@@ -1,7 +1,9 @@
 package io.github.vkaze.crayon.ui.settings;
 
+import com.intellij.ide.projectView.ProjectView;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.openapi.project.Project;
 import com.intellij.ui.ToolbarDecorator;
 import io.github.vkaze.crayon.MsgBundle;
 import io.github.vkaze.crayon.storage.FileCrayonState;
@@ -17,8 +19,10 @@ import java.awt.GridLayout;
 public class FileCrayonPanel extends JPanel {
     private static final Logger log = Logger.getInstance(FileCrayonPanel.class);
     private final FileCrayonTable crayonTable;
+    private final Project project;
 
-    public FileCrayonPanel(FileCrayonState crayonState) {
+    public FileCrayonPanel(FileCrayonState crayonState, Project project) {
+        this.project = project;
         setLayout(new BorderLayout());
 
         final JPanel topPanel = new JPanel();
@@ -51,6 +55,7 @@ public class FileCrayonPanel extends JPanel {
             log.info("Applying changes to the table");
             crayonTable.apply();
             UISettings.getInstance().fireUISettingsChanged();
+            ProjectView.getInstance(project).refresh();
         }
     }
 

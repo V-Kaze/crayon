@@ -27,7 +27,7 @@ public class FileCrayonConfigurable implements Configurable {
     @Override
     public @Nullable JComponent createComponent() {
         if (fileCrayonPanel == null) {
-            fileCrayonPanel = new FileCrayonPanel(FileCrayonState.getInstance(project));
+            fileCrayonPanel = new FileCrayonPanel(FileCrayonState.getInstance(project), project);
         }
 
         return fileCrayonPanel;
