@@ -12,3 +12,9 @@
 ## [1.0.0] - 2024-12-28
 
 - Initial release
+
+## [1.0.1] - 2024-12-28
+
+### Changed
+
+- Updated supported platform versions
