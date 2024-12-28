@@ -26,6 +26,7 @@ public class FileCrayonTable extends JBTable {
         nameColumn.setCellRenderer(new DefaultTableCellRenderer());
         TableColumn colorColumn = columnModel.getColumn(ColumnConstants.CRAYON_COLUMN);
         colorColumn.setCellRenderer(new ColorCellRenderer());
+        colorColumn.setMaxWidth(100);
     }
 
     @Override
