@@ -4,7 +4,6 @@ import com.intellij.ide.projectView.ProjectView;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.NlsActions;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -16,8 +15,6 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.Icon;
 
 public abstract class AbstractAddCrayonAction extends AnAction implements CrayonAction {
-    private static final Logger log = Logger.getInstance(AbstractAddCrayonAction.class);
-
     public AbstractAddCrayonAction() {
         super();
     }
