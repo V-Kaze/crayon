@@ -94,8 +94,10 @@ intellijPlatform {
     }
 
     signing {
-        certificateChain = providers.environmentVariable("CERTIFICATE_CHAIN")
-        privateKey = providers.environmentVariable("PRIVATE_KEY")
+        certificateChain =
+            providers.environmentVariable("CERTIFICATE_CHAIN_PATH").map { text -> File(text).readText(Charsets.UTF_8) }
+        privateKey =
+            providers.environmentVariable("PRIVATE_KEY_PATH").map { text -> File(text).readText(Charsets.UTF_8) }
         password = providers.environmentVariable("PRIVATE_KEY_PASSWORD")
     }
 
