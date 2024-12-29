@@ -1,8 +1,12 @@
-# Crayon
-
-![Build](https://github.com/V-Kaze/crayon/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/26210.svg)](https://plugins.jetbrains.com/plugin/26210)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/26210.svg)](https://plugins.jetbrains.com/plugin/26210)
+<div style="text-align:center">
+    <h1>Crayon</h1>
+    <img src="https://raw.githubusercontent.com/V-Kaze/crayon/04811d68fa4a378a9a20c0ae5d8ab1efa6c19151/src/main/resources/META-INF/pluginIcon.svg" alt="Plugin icon" width="200" height="200"/>
+    <br />
+    <img src="https://github.com/V-Kaze/crayon/workflows/Build/badge.svg" alt="Build" />
+    <a href="https://plugins.jetbrains.com/plugin/26210"><img src="https://img.shields.io/jetbrains/plugin/v/26210.svg" alt="JetBrains Market"></a>
+    <a href="https://plugins.jetbrains.com/plugin/26210"><img src="https://img.shields.io/jetbrains/plugin/d/26210.svg" alt="Number of downloads" href=></a>
+    <br />
+</div>
 
 ## Example
 
