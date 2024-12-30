@@ -11,7 +11,7 @@
   <a href="https://plugins.jetbrains.com/plugin/26210" target="_blank">
     <img alt="Number of downloads" src="https://img.shields.io/jetbrains/plugin/d/26210.svg" style="display: inline-block; vertical-align: middle;" />
   </a>
-  <a href="https://github.com/V-Kaze/crayon/blob/main/LICENSE">
+  <a href="https://github.com/V-Kaze/crayon/blob/main/LICENSE" target="_blank">
     <img alt="License" src="https://img.shields.io/badge/Code_License-MIT-f5de53?&color=f5de53" style="display: inline-block; vertical-align: middle;"/>
   </a>
 </div>
