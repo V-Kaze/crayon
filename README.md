@@ -1,17 +1,17 @@
 <div align="center" style="line-height: 1;">
-  <img src="https://github.com/V-Kaze/crayon/blob/main/src/main/resources/META-INF/pluginIcon.svg?raw=true" width="50%" alt="Crayon" />
+  <img src="https://github.com/V-Kaze/crayon/blob/main/src/main/resources/META-INF/pluginIcon.svg?raw=true" width="40%" alt="Crayon" />
   <h1>Crayon</h1>
 </div>
 <hr>
 <div align="center" style="line-height: 1;">
   <img alt="Build status" src="https://github.com/V-Kaze/crayon/workflows/Build/badge.svg" style="display: inline-block; vertical-align: middle;" />
-  <a href="https://plugins.jetbrains.com/plugin/26210" target="_blank" style="margin: 2px;">
+  <a href="https://plugins.jetbrains.com/plugin/26210" target="_blank">
     <img alt="JetBrains Market" src="https://img.shields.io/jetbrains/plugin/v/26210.svg" style="display: inline-block; vertical-align: middle;" />
   </a>
-  <a href="https://plugins.jetbrains.com/plugin/26210" target="_blank" style="margin: 2px;">
+  <a href="https://plugins.jetbrains.com/plugin/26210" target="_blank">
     <img alt="Number of downloads" src="https://img.shields.io/jetbrains/plugin/d/26210.svg" style="display: inline-block; vertical-align: middle;" />
   </a>
-  <a href="https://github.com/V-Kaze/crayon/blob/main/LICENSE" style="margin: 2px;">
+  <a href="https://github.com/V-Kaze/crayon/blob/main/LICENSE">
     <img alt="License" src="https://img.shields.io/badge/Code_License-MIT-f5de53?&color=f5de53" style="display: inline-block; vertical-align: middle;"/>
   </a>
 </div>
