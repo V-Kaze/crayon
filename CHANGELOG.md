@@ -4,6 +4,15 @@
 
 ## [Unreleased]
 
+## [1.0.2] - 2025-01-16
+
+### Changed
+
+- Updated supported platform versions
+- Bump com.uber.nullaway:nullaway from 0.12.2 to 0.12.3
+- Updated README.md
+- Updated GitHub workflows
+
 ## [1.0.1] - 2024-12-28
 
 ### Changed
