@@ -13,7 +13,7 @@ jobs:
   release:
     name: Publish Plugin
     runs-on: ubuntu-latest
-    environment: Publish
+    environment: publishing
     permissions:
       contents: write
       pull-requests: write
