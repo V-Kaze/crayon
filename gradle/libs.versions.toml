@@ -2,7 +2,7 @@
 # libraries
 junit = "4.13.2"
 errorprone_core = "2.41.0"
-nullaway = "0.12.7"
+nullaway = "0.12.8"
 jspecify = "1.0.0"
 
 # plugins
