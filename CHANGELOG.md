@@ -4,6 +4,15 @@
 
 ## [Unreleased]
 
+## [1.0.4] - 2025-08-08
+
+- Bump org.jetbrains.kotlin.jvm from 2.1.20 to 2.2.0 by @dependabot in https://github.com/V-Kaze/crayon/pull/39
+- Bump net.ltgt.errorprone from 4.2.0 to 4.3.0 by @dependabot in https://github.com/V-Kaze/crayon/pull/41
+- Bump com.google.errorprone:error_prone_core from 2.38.0 to 2.41.0 by @dependabot in https://github.com/V-Kaze/crayon/pull/43
+- Bump org.jetbrains.intellij.platform from 2.5.0 to 2.7.0 by @dependabot in https://github.com/V-Kaze/crayon/pull/44
+- Updated plugin and supported platform versions by @V-Kaze in https://github.com/V-Kaze/crayon/pull/46
+- Bumped IDE version for debugging by @V-Kaze in https://github.com/V-Kaze/crayon/pull/47
+
 ## [1.0.3] - 2025-06-09
 
 - Changelog update - `v1.0.2` by @github-actions in https://github.com/V-Kaze/crayon/pull/21
@@ -33,7 +42,8 @@
 
 - Initial release
 
-[Unreleased]: https://github.com/V-Kaze/crayon/compare/v1.0.3...HEAD
+[Unreleased]: https://github.com/V-Kaze/crayon/compare/v1.0.4...HEAD
+[1.0.4]: https://github.com/V-Kaze/crayon/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/V-Kaze/crayon/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/V-Kaze/crayon/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/V-Kaze/crayon/compare/v1.0.0...v1.0.1
