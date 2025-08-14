@@ -32,7 +32,12 @@ repositories {
 
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
-    testImplementation(libs.junit)
+    testImplementation(libs.junit.api)
+    testImplementation(libs.junit.engine)
+    testImplementation(libs.junit.params)
+    testRuntimeOnly(libs.junit.platform)
+    // Workaround due to https://github.com/JetBrains/intellij-platform-gradle-plugin/issues/1711
+    testRuntimeOnly(libs.junit4)
 
     // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
     intellijPlatform {
@@ -44,10 +49,10 @@ dependencies {
         // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file for plugin from JetBrains Marketplace.
         plugins(providers.gradleProperty("platformPlugins").map { it.split(',') })
 
-        instrumentationTools()
         pluginVerifier()
         zipSigner()
         testFramework(TestFrameworkType.Platform)
+        testFramework(TestFrameworkType.JUnit5)
     }
 
     errorprone(libs.errorprone.core)
@@ -122,6 +127,10 @@ changelog {
 }
 
 tasks {
+    test {
+        useJUnitPlatform()
+    }
+
     wrapper {
         gradleVersion = providers.gradleProperty("gradleVersion").get()
     }
