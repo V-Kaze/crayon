@@ -10,7 +10,7 @@ jspecify = "1.0.0"
 # plugins
 changelog = "2.2.1"
 intelliJPlatform = "2.7.1"
-kotlin = "2.2.0"
+kotlin = "2.2.10"
 errorprone = "4.3.0"
 
 [libraries]
