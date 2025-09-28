@@ -1,5 +1,12 @@
 package io.github.vkaze.crayon.storage;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.Service;
 import com.intellij.openapi.components.State;
@@ -9,13 +16,8 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.serviceContainer.NonInjectable;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.XMap;
-import io.github.vkaze.crayon.Crayon;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import io.github.vkaze.crayon.Crayon;
 
 @Service(Service.Level.PROJECT)
 @State(name = "FileCrayonState", storages = @Storage(value = "crayons.xml"))
@@ -38,7 +40,9 @@ public final class FileCrayonState implements PersistentStateComponent<FileCrayo
 
     @Override
     public FileCrayonState getState() {
-        return this;
+        FileCrayonState state = new FileCrayonState();
+        XmlSerializerUtil.copyBean(this, state);
+        return state;
     }
 
     @Override
@@ -67,7 +71,12 @@ public final class FileCrayonState implements PersistentStateComponent<FileCrayo
         }
     }
 
-    public boolean removeFile(String path) {
+    public boolean removeFile(VirtualFile file) {
+        String path = file.getPath();
+        return removeFile(path);
+    }
+
+    private boolean removeFile(String path) {
         boolean removed = false;
         removed |= files.remove(path) != null;
         removed |= dirs.remove(path) != null;
